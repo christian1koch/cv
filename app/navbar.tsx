@@ -2,14 +2,8 @@
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
@@ -24,9 +18,9 @@ export default function Navbar() {
               <NavigationMenuItem>
                 <Link
                   className=" text-muted-foreground transition-colors hover:text-primary"
-                  href="/docs"
+                  href="/"
                 >
-                  easy-hooks
+                  CKE Projects
                 </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
@@ -41,6 +35,18 @@ export default function Navbar() {
                   href="/documentation"
                 >
                   Documentation
+                </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <Link
+                  className="text-muted-foreground transition-colors hover:text-primary text-sm mr-5"
+                  href="/project-structure"
+                >
+                  Project Structure
                 </Link>
               </NavigationMenuItem>
             </NavigationMenuList>

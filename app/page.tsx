@@ -1,3 +1,3 @@
 export default function Home() {
-  return <div>Easy Hooks</div>;
+  return <div>CKE Projects</div>;
 }

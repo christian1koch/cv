@@ -1,3 +1,3 @@
 export default function DocumentationPage() {
-  return <div>Use-Boolean</div>;
+  return <div>useDelayedLoading</div>;
 }

@@ -14,8 +14,8 @@ export function Sidebar() {
           <h4 className="font-semibold text-sm">Hooks</h4>
           <ul className="mt-2">
             <li className="my-4">
-              <SidebarLink href="/documentation/use-boolean">
-                useBoolean
+              <SidebarLink href="/documentation/useDelayedLoading">
+                useDelayedLoading
               </SidebarLink>
             </li>
             <li className="my-4">
