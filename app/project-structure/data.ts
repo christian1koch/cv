@@ -1,4 +1,40 @@
-export const cvData = {
+import { Skill } from "./skill";
+
+export interface CvData {
+  name: string;
+  role: string;
+  about: {
+    heading: string;
+    content: string;
+  };
+  skills: {
+    heading: string;
+    list: Skill[];
+  };
+  experience: {
+    heading: string;
+    items: {
+      company: string;
+      position: string;
+      responsibilities: string[];
+    }[];
+  };
+}
+
+const skillsList: Skill[] = [
+  { name: "TypeScript", level: 6 },
+  { name: "React", level: 6 },
+  { name: "Redux", level: 5 },
+  { name: "Javascript", level: 5 },
+  { name: "Java", level: 5 },
+  { name: "Next.js", level: 4 },
+  { name: "Node.js", level: 4 },
+  { name: "Express", level: 4 },
+  { name: "MongoDB", level: 4 },
+  { name: "PostgreSQL", level: 4 },
+];
+
+export const cvData: CvData = {
   name: "Christian Koch Echeverria",
   role: "Software Engineering with focus on React-based systems",
   about: {
@@ -8,18 +44,7 @@ export const cvData = {
   },
   skills: {
     heading: "Skills",
-    list: [
-      "TypeScript",
-      "React",
-      "Redux",
-      "Javascript",
-      "Java",
-      "Next.js",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "PostgreSQL",
-    ],
+    list: skillsList,
   },
   experience: {
     heading: "Work Experience",
@@ -38,24 +63,3 @@ export const cvData = {
     ],
   },
 };
-
-export interface CvData {
-  name: string;
-  role: string;
-  about: {
-    heading: string;
-    content: string;
-  };
-  skills: {
-    heading: string;
-    list: string[];
-  };
-  experience: {
-    heading: string;
-    items: {
-      company: string;
-      position: string;
-      responsibilities: string[];
-    }[];
-  };
-}
