@@ -3,6 +3,7 @@ import { cvData } from "./data";
 import { SkillIndicator } from "./skill";
 import SkillsSection from "./skills-section";
 import TextSection from "./text-section";
+import WorkExperience from "./work-experience-card";
 
 export default function CvPage() {
   const lotOfWhitespaceClassName = "mb-8";
@@ -25,7 +26,7 @@ export default function CvPage() {
       <div className=" mt-14 mb-16">
         <CkH2>{cvData.experience.heading}</CkH2>
       </div>
-      {cvData.experience.items.map((item, index) => (
+      {/* {cvData.experience.items.map((item, index) => (
         <div key={index}>
           <CkH3>{item.company}</CkH3>
           <CkH3>{item.position}</CkH3>
@@ -37,7 +38,8 @@ export default function CvPage() {
             </ul>
           </CkP>
         </div>
-      ))}
+      ))} */}
+      <WorkExperience workExperience={cvData.experience.items[0]} />
     </div>
   );
 }
