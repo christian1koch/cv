@@ -1,5 +1,7 @@
 import { CkH1, CkH2, CkH3, CkP } from "@/components/ui/typography";
 import { cvData } from "./data";
+import { SkillIndicator } from "./skill";
+import SkillsSection from "./skills-section";
 
 export default function CvPage() {
   return (
@@ -10,9 +12,7 @@ export default function CvPage() {
       <CkP>{cvData.about.content}</CkP>
       <CkH2>{cvData.skills.heading}</CkH2>
       <div>
-        {cvData.skills.list.map((skill, index) => (
-          <div key={index}>{skill}</div>
-        ))}
+        <SkillsSection skills={cvData.skills.list} />
       </div>
       <CkH2>{cvData.experience.heading}</CkH2>
       {cvData.experience.items.map((item, index) => (
