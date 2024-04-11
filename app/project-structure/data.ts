@@ -1,4 +1,5 @@
 import { Skill } from "./skill";
+import { Responsability, WorkExperience } from "./work-experience-card";
 
 export interface CvData {
   name: string;
@@ -13,11 +14,7 @@ export interface CvData {
   };
   experience: {
     heading: string;
-    items: {
-      company: string;
-      position: string;
-      responsibilities: string[];
-    }[];
+    items: WorkExperience[];
   };
 }
 
@@ -34,9 +31,32 @@ const skillsList: Skill[] = [
   { name: "PostgreSQL", level: 4 },
 ];
 
+const responsibilities: Responsability[] = [
+  {
+    responsibility: "Implementing new Features",
+    oneWordSummary: "Implementing",
+  },
+  {
+    responsibility: "Grooming tickets before sprint",
+    oneWordSummary: "Grooming",
+  },
+  {
+    responsibility: "Fixing bugs during and in-between sprints",
+    oneWordSummary: "Fixing",
+  },
+  {
+    responsibility: "Improve performance and our code quality",
+    oneWordSummary: "Techncial Stories",
+  },
+  {
+    responsibility: "Aligning with Backend Team for Rest APIs",
+    oneWordSummary: "BE-FE Communication",
+  },
+];
+
 export const cvData: CvData = {
   name: "Christian Koch Echeverria",
-  role: "Software Engineering with focus on React-based systems",
+  role: "Software Engineer with focus on React-based systems",
   about: {
     heading: "About",
     content:
@@ -52,13 +72,8 @@ export const cvData: CvData = {
       {
         company: "Valsight",
         position: "Frontend Web Developer",
-        responsibilities: [
-          "Implementing new Features",
-          "Grooming tickets before sprint",
-          "Fixing bugs during and in-between sprints",
-          "Tackling technical stories to improve performance and our code quality",
-          "Aligning with Backend Team for Rest APIs",
-        ],
+        responsibilities: responsibilities,
+        date: "2021 - Present",
       },
     ],
   },
