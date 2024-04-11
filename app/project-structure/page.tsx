@@ -9,7 +9,7 @@ export default function CvPage() {
   const lotOfWhitespaceClassName = "mb-8";
   return (
     <div className="container flex flex-col mx-auto max-w-2xl">
-      <div className=" mt-20 mb-24">
+      <div className=" mt-20 mb-10">
         <CkH1>{cvData.name}</CkH1>
       </div>
       <TextSection>{cvData.role}</TextSection>
@@ -26,19 +26,6 @@ export default function CvPage() {
       <div className=" mt-14 mb-16">
         <CkH2>{cvData.experience.heading}</CkH2>
       </div>
-      {/* {cvData.experience.items.map((item, index) => (
-        <div key={index}>
-          <CkH3>{item.company}</CkH3>
-          <CkH3>{item.position}</CkH3>
-          <CkP>
-            <ul>
-              {item.responsibilities.map((responsibility, index) => (
-                <li key={index}>{responsibility}</li>
-              ))}
-            </ul>
-          </CkP>
-        </div>
-      ))} */}
       <WorkExperience workExperience={cvData.experience.items[0]} />
     </div>
   );

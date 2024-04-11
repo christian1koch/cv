@@ -56,7 +56,7 @@ const responsibilities: Responsability[] = [
 
 export const cvData: CvData = {
   name: "Christian Koch Echeverria",
-  role: "Software Engineering with focus on React-based systems",
+  role: "Software Engineer with focus on React-based systems",
   about: {
     heading: "About",
     content:
