@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -11,8 +10,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils";
+import { useColorTheme } from "../color-theme/color-theme";
+import { useTheme } from "next-themes";
 
 export function ModeToggle() {
+  const { setTheme: setColorTheme } = useColorTheme();
   const { setTheme } = useTheme();
 
   return (

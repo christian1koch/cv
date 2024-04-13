@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import Navbar from "./navbar";
+import { ThemeProviderProps } from "next-themes/dist/types";
+import { ColorThemeProviderProps } from "@/components/color-theme/types";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -15,6 +17,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const nextThemesProviderProps = {
+    attribute: "class",
+    defaultTheme: "system",
+    enableSystem: true,
+    disableTransitionOnChange: true,
+    themes: ["light", "dark"],
+  };
+  const colorThemesProviderProps: ColorThemeProviderProps = {
+    colorThemes: ["rose"],
+    colorThemeAttribute: "class",
+  };
   return (
     <html lang="en">
       <head>
@@ -27,10 +40,8 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+          nextThemesProviderProps={nextThemesProviderProps}
+          colorThemesProviderProps={colorThemesProviderProps}
         >
           <div>
             <Navbar />
