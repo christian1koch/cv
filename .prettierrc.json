@@ -1,3 +1,3 @@
 {
-  "plugins": ["@vercel/style-guide/prettier"]
+  "plugins": ["@vercel/style-guide/prettier", "prettier-plugin-tailwindcss"]
 }
