@@ -1,9 +1,8 @@
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "@/components/theme-provider";
-import { ModeToggle } from "@/components/ui/mode-toggle";
 import Navbar from "./navbar";
+import { ThemeProvider } from "@/components/color-theme/theme-provider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -26,12 +25,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider>
           <div>
             <Navbar />
             {children}

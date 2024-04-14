@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -11,9 +10,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useDarkModeTheme } from "../color-theme/useTheme";
+import { DARK_MODE_THEMES } from "../color-theme/types";
 
 export function ModeToggle() {
-  const { setTheme } = useTheme();
+  const { setTheme } = useDarkModeTheme();
 
   return (
     <DropdownMenu>
@@ -25,13 +26,13 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+        <DropdownMenuItem onClick={() => setTheme(DARK_MODE_THEMES.LIGHT)}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        <DropdownMenuItem onClick={() => setTheme(DARK_MODE_THEMES.DARK)}>
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
+        <DropdownMenuItem onClick={() => setTheme(DARK_MODE_THEMES.SYSTEM)}>
           System
         </DropdownMenuItem>
       </DropdownMenuContent>
