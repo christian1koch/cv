@@ -1,47 +1,7 @@
-# Color Theme - Next Themes License
+# Next Themes License
 
-This repository contains a color theme for our application, which includes code that has been copied from the "next-themes" package. In order to comply with the licensing requirements, we have added the "next-themes" MIT license to this project.
+This repository contains a copy of the "next-themes" library license. We have copied their open-source code in order to create two separate themes: one for the color mode and one for the dark mode.
 
-## License
+Please note that the original "next-themes" library is licensed under the [MIT License](https://github.com/pacocoursey/next-themes/blob/main/LICENSE). We have included the license file in this repository for reference.
 
-The code in this repository is licensed under the MIT License. Please see the [LICENSE](./LICENSE) file for more details.
-
-The "next-themes" package is also licensed under the MIT License. You can find the original license in the [next-themes repository](https://github.com/pacocoursey/next-themes).
-
-## Usage
-
-To use this color theme in your application, follow these steps:
-
-1. Install the "next-themes" package by running the following command:
-
-```bash
-npm install next-themes
-```
-
-2. Import the color theme in your application:
-
-```javascript
-import { ThemeProvider } from "next-themes";
-import { ColorTheme } from "color-theme";
-
-function App() {
-  return (
-    <ThemeProvider>
-      <ColorTheme />
-      {/* Your application code */}
-    </ThemeProvider>
-  );
-}
-
-export default App;
-```
-
-3. Customize the color theme as needed by modifying the `ColorTheme` component.
-
-## Contributing
-
-We welcome contributions to improve this color theme. If you find any issues or have suggestions, please open an issue or submit a pull request.
-
-## Acknowledgements
-
-We would like to thank the authors of the "next-themes" package for their work and for providing a permissive license that allows us to use their code in our application.
+For more information about the "next-themes" library, please visit their [GitHub repository](https://github.com/pacocoursey/next-themes).
