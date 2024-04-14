@@ -1,4 +1,4 @@
-# Project Name
+# CV
 
 This is a work-in-progress project using TypeScript, Next.js, and Shadcn. Currently, no functionality is available. However, if you'd like to try it out, you can clone this repository, edit the mock data in the `Data.ts` file, and run `npm run dev`. This will display your CV with a beautiful design.
 
