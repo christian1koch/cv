@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { ThemeProvider as ColorThemesProvider } from "./color-theme/color-theme";
+import { ThemeProvider as ColorThemesProvider } from "./color-theme";
 import { type ThemeProviderProps } from "next-themes/dist/types";
 import { type ColorThemeProviderProps } from "./color-theme/types";
 
