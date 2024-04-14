@@ -1,15 +1,15 @@
+import { CalendarIcon } from "@radix-ui/react-icons";
+import React from "react";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
+  CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { CalendarIcon } from "@radix-ui/react-icons";
-import React from "react";
+
 export interface WorkExperience {
   company: string;
   position: string;
@@ -32,22 +32,22 @@ const WorkExperienceCard = ({ workExperience }: WorkExperienceCardProps) => {
         <CardDescription>{position}</CardDescription>
       </CardHeader>
       <CardContent>
-        {responsibilities.map((responsibility, index) => (
+        {responsibilities.map((responsibility) => (
           <div
             key={responsibility.oneWordSummary}
-            className="flex w-full justify-between mb-4"
+            className="mb-4 flex w-full justify-between"
           >
             <div>{responsibility.responsibility}</div>
-            <div className="flex justify-start w-1/3">
-              <Badge variant={"default"}>{responsibility.oneWordSummary}</Badge>
+            <div className="flex w-1/3 justify-start">
+              <Badge variant="default">{responsibility.oneWordSummary}</Badge>
             </div>
           </div>
         ))}
       </CardContent>
       <Separator />
       <div className="flex w-full justify-start">
-        <div className="flex my-4 ml-4 items-start">
-          <CalendarIcon className="w-6 h-5 text-muted-foreground" />
+        <div className="my-4 ml-4 flex items-start">
+          <CalendarIcon className="h-5 w-6 text-muted-foreground" />
           <p className="text-sm text-muted-foreground">{date}</p>
         </div>
       </div>

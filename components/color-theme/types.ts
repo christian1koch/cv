@@ -1,8 +1,7 @@
 import * as React from "react";
 import { ObjectValues } from "@/lib/utils";
-interface ValueObject {
-  [themeName: string]: string;
-}
+
+type ValueObject = Record<string, string>;
 
 export const DARK_MODE_THEMES = {
   LIGHT: "light",

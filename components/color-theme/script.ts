@@ -1,3 +1,4 @@
+/* eslint-disable -- is a script*/
 export const script = (
   attribute: string,
   storageKey: string,

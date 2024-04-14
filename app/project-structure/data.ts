@@ -72,7 +72,7 @@ export const cvData: CvData = {
       {
         company: "Valsight",
         position: "Frontend Web Developer",
-        responsibilities: responsibilities,
+        responsibilities,
         date: "2021 - Present",
       },
     ],

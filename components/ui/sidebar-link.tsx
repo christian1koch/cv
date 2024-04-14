@@ -1,7 +1,7 @@
 "use-client";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export default function SidebarLink({
   href,
@@ -16,7 +16,7 @@ export default function SidebarLink({
   return (
     <Link
       className={cn(
-        "text-sm text-muted-foreground hover:text-primary transition-colors",
+        "text-sm text-muted-foreground transition-colors hover:text-primary",
         activeClassName
       )}
       href={href}

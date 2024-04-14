@@ -1,9 +1,9 @@
-export interface TextSectionProps
-  extends React.ComponentPropsWithoutRef<"div"> {}
-
+import React from "react";
 import { CkP } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
-import React from "react";
+
+// TODO: Shouldnt this be like a `TextSection` component inside the components folder?
+export type TextSectionProps = React.ComponentPropsWithoutRef<"div">;
 
 const TextSection = (props: TextSectionProps) => {
   const { className, ...rest } = props;

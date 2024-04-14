@@ -1,5 +1,5 @@
 "use client";
-
+/* eslint-disable -- because this code was from next-themes */
 import * as React from "react";
 import { script } from "./script";
 import type { Attribute, ThemeProviderProps, UseThemeProps } from "./types";
@@ -17,7 +17,7 @@ export const useTheme = (
 export const ThemeProvider = ({
   ...props
 }: ThemeProviderProps): React.ReactNode => {
-  const context = React.useContext(props.customContext || ThemeContext);
+  const context = React.useContext(props.customContext ?? ThemeContext);
 
   // Ignore nested context providers, just passthrough children
   if (context) return props.children;
@@ -40,7 +40,7 @@ const Theme = ({
   nonce,
   customContext,
 }: ThemeProviderProps) => {
-  const Context = customContext || ThemeContext;
+  const Context = customContext ?? ThemeContext;
   const [theme, setThemeState] = React.useState(() =>
     getTheme(storageKey, defaultTheme)
   );
@@ -83,7 +83,7 @@ const Theme = ({
         ? defaultTheme
         : null;
       const colorScheme = colorSchemes.includes(resolved) ? resolved : fallback;
-      // @ts-ignore
+      // @ts-expect-error -- it was like this before
       d.style.colorScheme = colorScheme;
     }
 
@@ -185,7 +185,6 @@ const Theme = ({
   );
 };
 
-// eslint-disable-next-line react/display-name
 const ThemeScript = React.memo(
   ({
     forcedTheme,

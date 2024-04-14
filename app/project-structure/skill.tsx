@@ -1,5 +1,4 @@
 import { Progress } from "@/components/ui/progress";
-import { CkH3 } from "@/components/ui/typography";
 
 export enum SkillLevels {
   Basic = 1,

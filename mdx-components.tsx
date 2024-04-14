@@ -1,7 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import { cn } from "./lib/utils";
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
+export function useMDXComponents(): MDXComponents {
   return {
     h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
       <h1
@@ -10,7 +10,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           className
         )}
         {...props}
-      />
+      >
+        {props.children}
+      </h1>
     ),
     h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
       <h2
@@ -19,7 +21,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           className
         )}
         {...props}
-      />
+      >
+        {props.children}
+      </h2>
     ),
     h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
       <h3
@@ -28,7 +32,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           className
         )}
         {...props}
-      />
+      >
+        {props.children}
+      </h3>
     ),
     h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
       <h4
@@ -37,7 +43,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           className
         )}
         {...props}
-      />
+      >
+        {props.children}
+      </h4>
     ),
     h5: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
       <h5
@@ -46,7 +54,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           className
         )}
         {...props}
-      />
+      >
+        {props.children}
+      </h5>
     ),
     h6: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
       <h6
@@ -55,13 +65,17 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           className
         )}
         {...props}
-      />
+      >
+        {props.children}
+      </h6>
     ),
     a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
       <a
         className={cn("font-medium underline underline-offset-4", className)}
         {...props}
-      />
+      >
+        {props.children}
+      </a>
     ),
     p: ({
       className,
@@ -95,8 +109,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       alt,
       ...props
     }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img className={cn("rounded-md", className)} alt={alt} {...props} />
+      // eslint-disable-next-line @next/next/no-img-element -- MDX Setting
+      <img alt={alt} className={cn("rounded-md", className)} {...props} />
     ),
     hr: ({ ...props }: React.HTMLAttributes<HTMLHRElement>) => (
       <hr className="my-4 md:my-8" {...props} />
