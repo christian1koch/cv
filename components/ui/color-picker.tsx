@@ -17,7 +17,7 @@ export interface Color {
 const ColorIcon = ({ color }: { color: Color }) => {
   return (
     <div
-      className="w-3 h-3 rounded-full"
+      className="h-3 w-3 rounded-full"
       style={{ backgroundColor: color.value }}
     />
   );
@@ -46,7 +46,7 @@ const ColorPicker = ({ colors }: { colors: Color[] }) => {
       <SelectContent className="w-full">
         {colors.map((color) => (
           <SelectItem key={color.label} className="w-full" value={color.label}>
-            <div className="flex justify-evenly w-full items-center">
+            <div className="flex w-full items-center justify-evenly">
               <ColorIcon color={color} />
               <div className="mx-2">{color.label}</div>
             </div>

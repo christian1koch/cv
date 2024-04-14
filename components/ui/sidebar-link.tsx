@@ -17,7 +17,7 @@ export default function SidebarLink({
     <Link
       className={cn(
         "text-sm text-muted-foreground transition-colors hover:text-primary",
-        activeClassName,
+        activeClassName
       )}
       href={href}
     >

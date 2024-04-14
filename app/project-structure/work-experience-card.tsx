@@ -35,10 +35,10 @@ const WorkExperienceCard = ({ workExperience }: WorkExperienceCardProps) => {
         {responsibilities.map((responsibility) => (
           <div
             key={responsibility.oneWordSummary}
-            className="flex w-full justify-between mb-4"
+            className="mb-4 flex w-full justify-between"
           >
             <div>{responsibility.responsibility}</div>
-            <div className="flex justify-start w-1/3">
+            <div className="flex w-1/3 justify-start">
               <Badge variant="default">{responsibility.oneWordSummary}</Badge>
             </div>
           </div>
@@ -46,8 +46,8 @@ const WorkExperienceCard = ({ workExperience }: WorkExperienceCardProps) => {
       </CardContent>
       <Separator />
       <div className="flex w-full justify-start">
-        <div className="flex my-4 ml-4 items-start">
-          <CalendarIcon className="w-6 h-5 text-muted-foreground" />
+        <div className="my-4 ml-4 flex items-start">
+          <CalendarIcon className="h-5 w-6 text-muted-foreground" />
           <p className="text-sm text-muted-foreground">{date}</p>
         </div>
       </div>

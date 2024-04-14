@@ -12,12 +12,12 @@ const SkillsSection = ({ skills }: SkillSectionProps) => {
       {skills.map((skill) => (
         <div
           key={skill.name}
-          className="flex w-full flex-row h-12 justify-around"
+          className="flex h-12 w-full flex-row justify-around"
         >
-          <div className="flex items-center justify-start w-1/3 h-full">
+          <div className="flex h-full w-1/3 items-center justify-start">
             <CkH3>{skill.name}</CkH3>
           </div>
-          <div className="flex justify-start items-center h-full w-1/3">
+          <div className="flex h-full w-1/3 items-center justify-start">
             <SkillIndicator level={skill.level} />
           </div>
         </div>

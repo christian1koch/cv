@@ -22,7 +22,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="flex items-center justify-between p-2 bg-background fixed top-0 w-full z-10">
+      <div className="fixed top-0 z-10 flex w-full items-center justify-between bg-background p-2">
         <div className="flex items-center gap-4">
           <NavigationMenu>
             <NavigationMenuList>
@@ -42,7 +42,7 @@ export default function Navbar() {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Link
-                  className="text-muted-foreground transition-colors hover:text-primary text-sm mr-5"
+                  className="mr-5 text-sm text-muted-foreground transition-colors hover:text-primary"
                   href="/documentation"
                 >
                   Documentation
@@ -54,7 +54,7 @@ export default function Navbar() {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Link
-                  className="text-muted-foreground transition-colors hover:text-primary text-sm mr-5"
+                  className="mr-5 text-sm text-muted-foreground transition-colors hover:text-primary"
                   href="/project-structure"
                 >
                   Project Structure

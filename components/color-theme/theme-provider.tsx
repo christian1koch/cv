@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { COLOR_MODE_THEMES, DARK_MODE_THEMES , UseThemeProps } from "./types";
+import { COLOR_MODE_THEMES, DARK_MODE_THEMES, UseThemeProps } from "./types";
 import { ThemeProvider as NextThemesProvider } from ".";
 
 export const colorContext = React.createContext<UseThemeProps | undefined>(

@@ -185,7 +185,6 @@ const Theme = ({
   );
 };
 
- 
 const ThemeScript = React.memo(
   ({
     forcedTheme,

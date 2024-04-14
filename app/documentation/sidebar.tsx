@@ -7,9 +7,9 @@ import SidebarLink from "@/components/ui/sidebar-link";
 export function Sidebar() {
   return (
     <div className="fixed h-full">
-      <ScrollArea className=" w-60 h-full pl-4">
+      <ScrollArea className=" h-full w-60 pl-4">
         <div className="p-4">
-          <h4 className="font-semibold text-sm">Hooks</h4>
+          <h4 className="text-sm font-semibold">Hooks</h4>
           <ul className="mt-2">
             <li className="my-4">
               <SidebarLink href="/documentation/useDelayedLoading">

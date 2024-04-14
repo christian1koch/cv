@@ -6,22 +6,22 @@ import WorkExperienceCard from "./work-experience-card";
 
 export default function CvPage() {
   return (
-    <div className="container flex flex-col mx-auto max-w-2xl">
-      <div className=" mt-20 mb-10">
+    <div className="container mx-auto flex max-w-2xl flex-col">
+      <div className=" mb-10 mt-20">
         <CkH1>{cvData.name}</CkH1>
       </div>
       <TextSection>{cvData.role}</TextSection>
-      <div className=" mt-14 mb-16">
+      <div className=" mb-16 mt-14">
         <CkH2>{cvData.about.heading}</CkH2>
       </div>
       <TextSection>{cvData.about.content}</TextSection>
-      <div className=" mt-14 mb-16">
+      <div className=" mb-16 mt-14">
         <CkH2>{cvData.skills.heading}</CkH2>
       </div>
       <div>
         <SkillsSection skills={cvData.skills.list} />
       </div>
-      <div className=" mt-14 mb-16">
+      <div className=" mb-16 mt-14">
         <CkH2>{cvData.experience.heading}</CkH2>
       </div>
       {cvData.experience.items[0] ? (
