@@ -6,15 +6,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useColorTheme } from "../color-theme/useTheme";
-import { COLOR_MODE_THEMES, ColorModeTheme } from "../color-theme/types";
+import { ColorModeTheme } from "../color-theme/types";
+import { useColorTheme } from "../color-theme/use-theme";
 
-export interface IColor {
+export interface Color {
   value: string;
   label: string;
 }
 
-const ColorIcon = ({ color }: { color: IColor }) => {
+const ColorIcon = ({ color }: { color: Color }) => {
   return (
     <div
       className="w-3 h-3 rounded-full"
@@ -23,12 +23,12 @@ const ColorIcon = ({ color }: { color: IColor }) => {
   );
 };
 
-const ColorPicker = ({ colors }: { colors: IColor[] }) => {
+const ColorPicker = ({ colors }: { colors: Color[] }) => {
   const { theme, setTheme } = useColorTheme();
 
   const setThemeToLowercase = (theme: string) => {
     const colorTheme = theme.toLowerCase() as ColorModeTheme;
-    return setTheme(colorTheme);
+    setTheme(colorTheme);
   };
 
   const getCurrentColor = () => {
@@ -40,12 +40,12 @@ const ColorPicker = ({ colors }: { colors: IColor[] }) => {
       value={getCurrentColor()?.label}
       onValueChange={setThemeToLowercase}
     >
-      <SelectTrigger className="w-44" suppressHydrationWarning>
+      <SelectTrigger suppressHydrationWarning className="w-44">
         <SelectValue className="w-full" placeholder="Pick a Color" />
       </SelectTrigger>
       <SelectContent className="w-full">
         {colors.map((color) => (
-          <SelectItem key={color.label} value={color.label} className="w-full">
+          <SelectItem key={color.label} className="w-full" value={color.label}>
             <div className="flex justify-evenly w-full items-center">
               <ColorIcon color={color} />
               <div className="mx-2">{color.label}</div>

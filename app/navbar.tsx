@@ -1,5 +1,6 @@
 "use client";
-import ColorPicker, { IColor } from "@/components/ui/color-picker";
+import Link from "next/link";
+import ColorPicker, { Color } from "@/components/ui/color-picker";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import {
   NavigationMenu,
@@ -7,9 +8,8 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
 
-const defaultColors: IColor[] = [
+const defaultColors: Color[] = [
   { value: "#2C3E50", label: "Zinc" },
   { value: "#E74C3C", label: "Rose" },
   { value: "#2ECC71", label: "Green" },

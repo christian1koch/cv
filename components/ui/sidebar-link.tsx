@@ -1,7 +1,7 @@
 "use-client";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export default function SidebarLink({
   href,

@@ -1,0 +1,3 @@
+{
+  "plugins": ["@vercel/style-guide/prettier"]
+}

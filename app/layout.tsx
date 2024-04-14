@@ -1,8 +1,8 @@
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/color-theme/theme-provider";
 import { cn } from "@/lib/utils";
 import Navbar from "./navbar";
-import { ThemeProvider } from "@/components/color-theme/theme-provider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link href="/favicon.ico" rel="icon" sizes="any" />
       </head>
       <body
         className={cn(

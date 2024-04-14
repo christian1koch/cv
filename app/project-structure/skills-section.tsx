@@ -1,5 +1,5 @@
-import { CkH3 } from "@/components/ui/typography";
 import React from "react";
+import { CkH3 } from "@/components/ui/typography";
 import { Skill, SkillIndicator } from "./skill";
 
 interface SkillSectionProps {

@@ -1,15 +1,15 @@
+import { CalendarIcon } from "@radix-ui/react-icons";
+import React from "react";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
+  CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { CalendarIcon } from "@radix-ui/react-icons";
-import React from "react";
+
 export interface WorkExperience {
   company: string;
   position: string;
@@ -32,14 +32,14 @@ const WorkExperienceCard = ({ workExperience }: WorkExperienceCardProps) => {
         <CardDescription>{position}</CardDescription>
       </CardHeader>
       <CardContent>
-        {responsibilities.map((responsibility, index) => (
+        {responsibilities.map((responsibility) => (
           <div
             key={responsibility.oneWordSummary}
             className="flex w-full justify-between mb-4"
           >
             <div>{responsibility.responsibility}</div>
             <div className="flex justify-start w-1/3">
-              <Badge variant={"default"}>{responsibility.oneWordSummary}</Badge>
+              <Badge variant="default">{responsibility.oneWordSummary}</Badge>
             </div>
           </div>
         ))}

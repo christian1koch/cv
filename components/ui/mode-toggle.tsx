@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -10,8 +10,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useDarkModeTheme } from "../color-theme/useTheme";
 import { DARK_MODE_THEMES } from "../color-theme/types";
+import { useDarkModeTheme } from "../color-theme/use-theme";
 
 export function ModeToggle() {
   const { setTheme } = useDarkModeTheme();
@@ -19,7 +19,7 @@ export function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button size="icon" variant="ghost">
           <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>

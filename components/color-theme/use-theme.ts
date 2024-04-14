@@ -1,6 +1,7 @@
-import { useTheme } from "./";
 import { colorContext } from "./theme-provider";
 import { ColorModeTheme, DarkModeTheme } from "./types";
+import { useTheme } from ".";
+
 export const useColorTheme = () => {
   const themeSettings = useTheme(colorContext);
 

@@ -2,9 +2,7 @@
 import * as React from "react";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
 import SidebarLink from "@/components/ui/sidebar-link";
-import { usePathname } from "next/navigation";
 
 export function Sidebar() {
   return (

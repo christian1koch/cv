@@ -1,9 +1,9 @@
 "use client";
 
 import * as React from "react";
+import { COLOR_MODE_THEMES, DARK_MODE_THEMES , UseThemeProps } from "./types";
 import { ThemeProvider as NextThemesProvider } from ".";
-import { COLOR_MODE_THEMES, DARK_MODE_THEMES } from "./types";
-import { UseThemeProps } from "./types";
+
 export const colorContext = React.createContext<UseThemeProps | undefined>(
   undefined
 );
@@ -11,18 +11,19 @@ export const colorContext = React.createContext<UseThemeProps | undefined>(
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   return (
     <NextThemesProvider
+      disableTransitionOnChange
+      enableSystem
       attribute="class"
       defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
       themes={[DARK_MODE_THEMES.LIGHT, DARK_MODE_THEMES.DARK]}
     >
       <NextThemesProvider
+        disableTransitionOnChange
+        enableSystem
         attribute="class"
+        customContext={colorContext}
         defaultTheme="system"
         storageKey="color-theme"
-        enableSystem
-        disableTransitionOnChange
         themes={[
           COLOR_MODE_THEMES.ROSE,
           COLOR_MODE_THEMES.GREEN,
@@ -30,7 +31,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
           COLOR_MODE_THEMES.ZINC,
           COLOR_MODE_THEMES.ORANGE,
         ]}
-        customContext={colorContext}
       >
         {children}
       </NextThemesProvider>

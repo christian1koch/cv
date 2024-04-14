@@ -1,3 +1,5 @@
+/* eslint-disable -- This is just a config file */
+
 import type { Config } from "tailwindcss"
 const { fontFamily } = require("tailwindcss/defaultTheme")
 
