@@ -13,7 +13,7 @@ export interface IColor {
   value: string;
   label: string;
 }
-// create a color icon which is a circlar div with a background color. It has a color: IColor prop and use the value of it to set the background color of the div
+
 const ColorIcon = ({ color }: { color: IColor }) => {
   return (
     <div
