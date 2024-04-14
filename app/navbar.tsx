@@ -22,7 +22,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="flex items-center justify-between p-2 bg-background fixed top-0 w-full">
+      <div className="flex items-center justify-between p-2 bg-background fixed top-0 w-full z-10">
         <div className="flex items-center gap-4">
           <NavigationMenu>
             <NavigationMenuList>
