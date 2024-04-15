@@ -9,17 +9,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { WorkExperience } from "./work-experience-types";
 
-export interface WorkExperience {
-  company: string;
-  position: string;
-  responsibilities: Responsability[];
-  date: string;
-}
-export interface Responsability {
-  responsibility: string;
-  oneWordSummary: string;
-}
 interface WorkExperienceCardProps {
   workExperience: WorkExperience;
 }

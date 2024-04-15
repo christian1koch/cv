@@ -1,5 +1,8 @@
-import { Skill } from "./skill";
-import { Responsability, WorkExperience } from "./work-experience-card";
+import { Skill } from "./skills/skill-types";
+import {
+  Responsability,
+  WorkExperience,
+} from "./work-experience/work-experience-types";
 
 export interface CvData {
   name: string;
