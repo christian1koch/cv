@@ -1,8 +1,8 @@
 import { CkH1, CkH2 } from "@/components/ui/typography";
 import { cvData } from "./data";
-import SkillsSection from "./skills-section";
-import TextSection from "./text-section";
-import WorkExperienceCard from "./work-experience-card";
+import TextSection from "./shared/text-section";
+import SkillsSection from "./skills/skills-section";
+import WorkExperienceCard from "./work-experience/work-experience-card";
 
 export default function CvPage() {
   return (

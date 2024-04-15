@@ -1,6 +1,7 @@
 import React from "react";
 import { CkH3 } from "@/components/ui/typography";
-import { Skill, SkillIndicator } from "./skill";
+import { SkillIndicator } from "./skill";
+import { Skill } from "./skill-types";
 
 interface SkillSectionProps {
   skills: Skill[];
