@@ -7,10 +7,10 @@ import {
 } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CkH2 } from "@/components/ui/typography";
 import TextSection from "../shared/text-section";
-import { useState } from "react";
 
 export interface ContactInformationProps {
   email: string;
@@ -23,8 +23,6 @@ export interface ContactInformationProps {
 }
 
 export const ContactInformation = (props: ContactInformationProps) => {
-  const [shouldShowPhoneNumber, setShouldShowPhoneNumber] = useState<boolean>();
-
   return (
     <div className="flex">
       <div className="w-32 rounded-full bg-primary/90">
@@ -43,15 +41,7 @@ export const ContactInformation = (props: ContactInformationProps) => {
         </div>
         <div className="mx-6 flex justify-between">
           <div>
-            <Button
-              className="mx-1"
-              size={shouldShowPhoneNumber ? "default" : "icon"}
-              variant="outline"
-              onClick={() => setShouldShowPhoneNumber(!shouldShowPhoneNumber)}
-            >
-              <MobileIcon />
-              {!!shouldShowPhoneNumber && props.phone}
-            </Button>
+            <PhoneNumberButton phone={props.phone} />
             {!!props.linkedin && <LinkedinButton linkedin={props.linkedin} />}
             {!!props.github && <GithubButton github={props.github} />}
           </div>
@@ -81,3 +71,18 @@ const LinkedinButton = ({ linkedin }: { linkedin: string }) => (
     </Link>
   </Button>
 );
+
+const PhoneNumberButton = ({ phone }: { phone: string }) => {
+  const [shouldShowPhoneNumber, setShouldShowPhoneNumber] = useState<boolean>();
+  return (
+    <Button
+      className="mx-1"
+      size={shouldShowPhoneNumber ? "default" : "icon"}
+      variant="outline"
+      onClick={() => setShouldShowPhoneNumber(!shouldShowPhoneNumber)}
+    >
+      <MobileIcon />
+      {!!shouldShowPhoneNumber && phone}
+    </Button>
+  );
+};
