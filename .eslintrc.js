@@ -72,6 +72,7 @@ module.exports = {
         reservedFirst: true,
       },
     ],
+    "no-implicit-coercion": "off",
     // sort import statements
     "import/order": [
       "warn",

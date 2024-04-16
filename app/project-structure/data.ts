@@ -5,8 +5,15 @@ import {
 } from "./work-experience/work-experience-types";
 
 export interface CvData {
-  name: string;
-  role: string;
+  contactInformation: {
+    email: string;
+    phone: string;
+    github?: string;
+    linkedin?: string;
+    image: string;
+    name: string;
+    role: string;
+  };
   about: {
     heading: string;
     content: string;
@@ -58,8 +65,16 @@ const responsibilities: Responsability[] = [
 ];
 
 export const cvData: CvData = {
-  name: "Christian Koch Echeverria",
-  role: "Software Engineer with focus on React-based systems",
+  contactInformation: {
+    email: "ko.che@web.de",
+    phone: "+49 176 234 567 89",
+    github: "https://github.com/christian1koch",
+    linkedin:
+      "https://www.linkedin.com/in/christian-koch-echeverria-920860214/",
+    name: "Christian Koch Echeverria",
+    role: "Software Engineer with focus on React-based systems",
+    image: "/images/profilePic.png",
+  },
   about: {
     heading: "About",
     content:
