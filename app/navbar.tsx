@@ -55,9 +55,9 @@ export default function Navbar() {
               <NavigationMenuItem>
                 <Link
                   className="mr-5 text-sm text-muted-foreground transition-colors hover:text-primary"
-                  href="/project-structure"
+                  href="/cv"
                 >
-                  Project Structure
+                  CV
                 </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
