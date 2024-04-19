@@ -6,6 +6,7 @@ import {
 
 export interface CvData {
   contactInformation: {
+    link: string;
     email: string;
     phone: string;
     github?: string;
@@ -16,14 +17,17 @@ export interface CvData {
   };
   about: {
     heading: string;
+    link: string;
     content: string;
   };
   skills: {
     heading: string;
+    link: string;
     list: Skill[];
   };
   experience: {
     heading: string;
+    link: string;
     items: WorkExperience[];
   };
 }
@@ -66,6 +70,7 @@ const responsibilities: Responsability[] = [
 
 export const cvData: CvData = {
   contactInformation: {
+    link: "#contact-information",
     email: "ko.che@web.de",
     phone: "+49 176 234 567 89",
     github: "https://github.com/christian1koch",
@@ -77,17 +82,21 @@ export const cvData: CvData = {
   },
   about: {
     heading: "About",
+    link: "#about",
     content:
       "As a Software Engineer with large experience on React, I have taken multiple projects from design to implementation, using the latest tools and technologies. I have work professionally with Typescript, React, Redux, i18n, Styled Components and much more libraries. In personal project I have work with Tailwind, Next.js, Java, Node.js, Express, MongoDB, PostgreSQL.",
   },
   skills: {
     heading: "Skills",
+    link: "#skills",
     list: skillsList,
   },
   experience: {
     heading: "Work Experience",
+    link: "#work-experience",
     items: [
       {
+        link: "#valsight",
         company: "Valsight",
         position: "Frontend Web Developer",
         responsibilities,
