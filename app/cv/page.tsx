@@ -13,23 +13,23 @@ export default function CvPage() {
     <>
       <Sidebar sidebarContent={dataToSidebarContent(cvData)} />
       <div
-        id={cvData.contactInformation.id}
         className="container mx-auto mt-14 flex max-w-2xl flex-col"
+        id={cvData.contactInformation.id}
       >
         <ContactInformation {...cvData.contactInformation} />
 
         <div
-          id={cvData.about.id}
           className=" mb-16 mt-14"
           data-section={cvData.about.heading}
+          id={cvData.about.id}
         >
           <CkH2>{cvData.about.heading}</CkH2>
         </div>
         <TextSection>{cvData.about.content}</TextSection>
         <div
-          id={cvData.skills.id}
           className=" mb-16 mt-14"
           data-section={cvData.skills.heading}
+          id={cvData.skills.id}
         >
           <CkH2>{cvData.skills.heading}</CkH2>
         </div>
@@ -37,9 +37,9 @@ export default function CvPage() {
           <SkillsSection skills={cvData.skills.list} />
         </div>
         <div
-          id={cvData.experience.id}
           className=" mb-16 mt-14"
           data-section={cvData.experience.heading}
+          id={cvData.experience.id}
         >
           <CkH2>{cvData.experience.heading}</CkH2>
         </div>
