@@ -1,3 +1,5 @@
+import { ScrollArea } from "@/components/ui/scroll-area";
+import SidebarElement from "@/components/ui/sidebar-element";
 import { SidebarContent } from "./sidebar-types";
 
 interface SidebarProps {
@@ -6,25 +8,31 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ sidebarContent }) => {
   return (
-    <div className="sidebar">
-      {sidebarContent.map((content) => (
-        <div key={content.title} className="sidebar__item">
-          <div className="sidebar__item-title">
-            <span>{content.title}</span>
-          </div>
-          {content.children ? (
-            <div className="sidebar__item-children">
-              {content.children.map((child) => (
-                <div key={child.title} className="sidebar__item">
-                  <div className="sidebar__item-title">
-                    <span>{child.title}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : null}
+    <div className="fixed h-full">
+      <ScrollArea className=" h-full w-60 pl-4">
+        <div className="p-4">
+          <ul className="mt-2">
+            {sidebarContent.map((content) => (
+              <li key={`sidebar ${content.link}`} className="my-4">
+                <SidebarElement href={content.link}>
+                  {content.title}
+                  {content.children ? (
+                    <ul>
+                      {content.children.map((child) => (
+                        <li key={`sidebar ${child.link}`}>
+                          <SidebarElement href={child.link}>
+                            {child.title}
+                          </SidebarElement>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </SidebarElement>
+              </li>
+            ))}
+          </ul>
         </div>
-      ))}
+      </ScrollArea>
     </div>
   );
 };
