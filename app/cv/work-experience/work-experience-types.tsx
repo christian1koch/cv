@@ -1,6 +1,6 @@
 export interface WorkExperience {
   company: string;
-  link: string;
+  id: string;
   position: string;
   responsibilities: Responsability[];
   date: string;

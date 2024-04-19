@@ -5,22 +5,22 @@ export function dataToSidebarContent(data: CvData): SidebarContent[] {
   return [
     {
       title: "Contact Information",
-      link: data.contactInformation.link,
+      id: data.contactInformation.id,
     },
     {
       title: data.about.heading,
-      link: data.about.link,
+      id: data.about.id,
     },
     {
       title: data.skills.heading,
-      link: data.skills.link,
+      id: data.skills.id,
     },
     {
       title: data.experience.heading,
-      link: data.experience.link,
+      id: data.experience.id,
       children: data.experience.items.map((item) => ({
         title: item.company,
-        link: `#${item.company}`,
+        id: item.id,
       })),
     },
   ];
