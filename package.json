@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "eslint-fix": "eslint --fix ."
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",
