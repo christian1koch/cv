@@ -56,7 +56,7 @@ const responsibilities: Responsability[] = [
   },
   {
     responsibility: "Fixing bugs during and in-between sprints",
-    oneWordSummary: "Fixing",
+    oneWordSummary: "Bug Fixing",
   },
   {
     responsibility: "Improve performance and our code quality",
