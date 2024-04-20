@@ -2,24 +2,24 @@
 import { useEffect, useRef, useState } from "react";
 
 // Based on tutorial from https://netacci.hashnode.dev/how-to-highlight-active-navigation-on-scroll-in-react
-const useActiveElement = (dataIdentifier: string) => {
+const useActiveElement = (
+  dataIdentifier: string,
+  options?: IntersectionObserverInit
+) => {
   const [activeSection, setActiveSection] = useState<string>();
   const observer = useRef<IntersectionObserver>();
 
   useEffect(() => {
     //create new instance and pass a callback function
-    observer.current = new IntersectionObserver(
-      (entries) => {
-        const visibleSection = entries.find(
-          (entry) => entry.isIntersecting
-        )?.target;
-        //Update state with the visible section ID
-        if (visibleSection) {
-          setActiveSection(visibleSection.id);
-        }
-      },
-      { rootMargin: "0px 0px -60% 0px" }
-    );
+    observer.current = new IntersectionObserver((entries) => {
+      const visibleSection = entries.find(
+        (entry) => entry.isIntersecting
+      )?.target;
+      //Update state with the visible section ID
+      if (visibleSection) {
+        setActiveSection(visibleSection.id);
+      }
+    }, options);
 
     //Get custom attribute data-section from all sections
     const sections = document.querySelectorAll(dataIdentifier);
@@ -33,7 +33,7 @@ const useActiveElement = (dataIdentifier: string) => {
         observer.current?.unobserve(section);
       });
     };
-  }, [dataIdentifier]);
+  }, [dataIdentifier, options]);
 
   return activeSection;
 };

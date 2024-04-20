@@ -10,7 +10,9 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ sidebarContent }) => {
-  const activeSection = useActiveElement("[data-section]");
+  const activeSection = useActiveElement("[data-section]", {
+    rootMargin: "0px 0px -60% 0px",
+  });
   return (
     <div className="fixed h-full">
       <ScrollArea className=" flex h-full w-60 pl-4">
