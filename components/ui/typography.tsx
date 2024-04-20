@@ -21,16 +21,22 @@ export function CkH1({
 export function CkH2({
   children,
   className,
+  "data-section": dataSection,
+  id,
 }: Readonly<{
   children: React.ReactNode;
   className?: string;
+  ["data-section"]?: string;
+  id: string;
 }>) {
   return (
     <h2
+      id={id}
       className={cn(
         "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
         className
       )}
+      data-section={dataSection}
     >
       {children}
     </h2>
