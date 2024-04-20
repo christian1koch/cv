@@ -23,24 +23,24 @@ export const Sidebar: React.FC<SidebarProps> = ({ sidebarContent }) => {
                   isActive={isSidebarContentActive(content, activeSection)}
                 >
                   {content.title}
-                  {content.children ? (
-                    <ul>
-                      {content.children.map((child) => (
-                        <li key={`sidebar ${child.id}`} className="m-4">
-                          <SidebarElement
-                            href={`#${child.id}`}
-                            isActive={isSidebarContentActive(
-                              child,
-                              activeSection
-                            )}
-                          >
-                            {child.title}
-                          </SidebarElement>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
                 </SidebarElement>
+                {content.children ? (
+                  <ul>
+                    {content.children.map((child) => (
+                      <li key={`sidebar ${child.id}`} className="m-4">
+                        <SidebarElement
+                          href={`#${child.id}`}
+                          isActive={isSidebarContentActive(
+                            child,
+                            activeSection
+                          )}
+                        >
+                          {child.title}
+                        </SidebarElement>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </li>
             ))}
           </ul>
