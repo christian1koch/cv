@@ -20,7 +20,7 @@ const WorkExperienceCard = ({ workExperience }: WorkExperienceCardProps) => {
     <div className="mb-16">
       <Card>
         <CardHeader>
-          <CardTitle id={id} data-section={id}>
+          <CardTitle data-section={id} id={id}>
             {company}
           </CardTitle>
           <CardDescription>{position}</CardDescription>

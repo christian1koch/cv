@@ -19,13 +19,13 @@ export default function CvPage() {
         />
 
         <div className=" mb-16 mt-14">
-          <CkH2 id={cvData.about.id} data-section={cvData.about.id}>
+          <CkH2 data-section={cvData.about.id} id={cvData.about.id}>
             {cvData.about.heading}
           </CkH2>
         </div>
         <TextSection>{cvData.about.content}</TextSection>
         <div className=" mb-16 mt-14">
-          <CkH2 id={cvData.skills.id} data-section={cvData.skills.id}>
+          <CkH2 data-section={cvData.skills.id} id={cvData.skills.id}>
             {cvData.skills.heading}
           </CkH2>
         </div>
@@ -33,7 +33,7 @@ export default function CvPage() {
           <SkillsSection skills={cvData.skills.list} />
         </div>
         <div className=" mb-16 mt-14">
-          <CkH2 id={cvData.experience.id} data-section={cvData.experience.id}>
+          <CkH2 data-section={cvData.experience.id} id={cvData.experience.id}>
             {cvData.experience.heading}
           </CkH2>
         </div>
