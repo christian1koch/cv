@@ -20,11 +20,12 @@ export interface ContactInformationProps {
   image: string;
   name: string;
   role: string;
+  id: string;
 }
 
 export const ContactInformation = (props: ContactInformationProps) => {
   return (
-    <div className="flex">
+    <div className="my-8 flex">
       <div className="w-32 rounded-full bg-primary/90">
         <Image
           alt={props.name}
@@ -36,7 +37,13 @@ export const ContactInformation = (props: ContactInformationProps) => {
       </div>
       <div className="flex flex-col justify-between">
         <div className=" mx-4 flex flex-col items-center">
-          <CkH2 className="mt-2 text-4xl font-bold">{props.name}</CkH2>
+          <CkH2
+            id={props.id}
+            className="mt-2 text-4xl font-bold"
+            data-section={props.id}
+          >
+            {props.name}
+          </CkH2>
           <TextSection>{props.role}</TextSection>
         </div>
         <div className="mx-6 flex justify-between">

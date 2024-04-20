@@ -12,36 +12,30 @@ export default function CvPage() {
   return (
     <>
       <Sidebar sidebarContent={dataToSidebarContent(cvData)} />
-      <div
-        className="container mx-auto mt-14 flex max-w-2xl flex-col"
-        id={cvData.contactInformation.id}
-      >
-        <ContactInformation {...cvData.contactInformation} />
+      <div className="container mx-auto mt-14 flex max-w-2xl flex-col">
+        <ContactInformation
+          {...cvData.contactInformation}
+          id={cvData.contactInformation.id}
+        />
 
-        <div
-          className=" mb-16 mt-14"
-          data-section={cvData.about.heading}
-          id={cvData.about.id}
-        >
-          <CkH2>{cvData.about.heading}</CkH2>
+        <div className=" mb-16 mt-14">
+          <CkH2 id={cvData.about.id} data-section={cvData.about.id}>
+            {cvData.about.heading}
+          </CkH2>
         </div>
         <TextSection>{cvData.about.content}</TextSection>
-        <div
-          className=" mb-16 mt-14"
-          data-section={cvData.skills.heading}
-          id={cvData.skills.id}
-        >
-          <CkH2>{cvData.skills.heading}</CkH2>
+        <div className=" mb-16 mt-14">
+          <CkH2 id={cvData.skills.id} data-section={cvData.skills.id}>
+            {cvData.skills.heading}
+          </CkH2>
         </div>
         <div>
           <SkillsSection skills={cvData.skills.list} />
         </div>
-        <div
-          className=" mb-16 mt-14"
-          data-section={cvData.experience.heading}
-          id={cvData.experience.id}
-        >
-          <CkH2>{cvData.experience.heading}</CkH2>
+        <div className=" mb-16 mt-14">
+          <CkH2 id={cvData.experience.id} data-section={cvData.experience.id}>
+            {cvData.experience.heading}
+          </CkH2>
         </div>
         {cvData.experience.items[0] ? (
           <WorkExperienceCard workExperience={cvData.experience.items[0]} />

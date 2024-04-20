@@ -8,15 +8,18 @@ const useActiveElement = (dataIdentifier: string) => {
 
   useEffect(() => {
     //create new instance and pass a callback function
-    observer.current = new IntersectionObserver((entries) => {
-      const visibleSection = entries.find(
-        (entry) => entry.isIntersecting
-      )?.target;
-      //Update state with the visible section ID
-      if (visibleSection) {
-        setActiveSection(visibleSection.id);
-      }
-    });
+    observer.current = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries.find(
+          (entry) => entry.isIntersecting
+        )?.target;
+        //Update state with the visible section ID
+        if (visibleSection) {
+          setActiveSection(visibleSection.id);
+        }
+      },
+      { rootMargin: "0px 0px -60% 0px" }
+    );
 
     //Get custom attribute data-section from all sections
     const sections = document.querySelectorAll(dataIdentifier);

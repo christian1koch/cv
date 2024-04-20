@@ -11,7 +11,6 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ sidebarContent }) => {
   const activeSection = useActiveElement("[data-section]");
-
   return (
     <div className="fixed h-full">
       <ScrollArea className=" flex h-full w-60 pl-4">
@@ -20,7 +19,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ sidebarContent }) => {
             {sidebarContent.map((content) => (
               <li key={`sidebar ${content.id}`} className="my-4">
                 <SidebarElement
-                  href={content.id}
+                  href={`#${content.id}`}
                   isActive={isSidebarContentActive(content, activeSection)}
                 >
                   {content.title}
@@ -29,7 +28,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ sidebarContent }) => {
                       {content.children.map((child) => (
                         <li key={`sidebar ${child.id}`} className="mx-4">
                           <SidebarElement
-                            href={child.id}
+                            href={`#${child.id}`}
                             isActive={isSidebarContentActive(
                               child,
                               activeSection
