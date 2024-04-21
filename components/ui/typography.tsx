@@ -1,18 +1,30 @@
 import { cn } from "@/lib/utils";
 
-export function CkH1({
-  children,
-  className,
-}: Readonly<{
+interface H1Props extends React.ComponentPropsWithoutRef<"h1"> {
   children: React.ReactNode;
-  className?: string;
-}>) {
+}
+
+interface H2Props extends React.ComponentPropsWithoutRef<"h2"> {
+  children: React.ReactNode;
+  ["data-section"]?: string;
+}
+
+interface H3Props extends React.ComponentPropsWithoutRef<"h3"> {
+  children: React.ReactNode;
+}
+
+interface PProps extends React.ComponentPropsWithoutRef<"p"> {
+  children: React.ReactNode;
+}
+
+export function CkH1({ children, className, ...rest }: Readonly<H1Props>) {
   return (
     <h1
       className={cn(
         "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl",
         className
       )}
+      {...rest}
     >
       {children}
     </h1>
@@ -23,12 +35,8 @@ export function CkH2({
   className,
   "data-section": dataSection,
   id,
-}: Readonly<{
-  children: React.ReactNode;
-  className?: string;
-  ["data-section"]?: string;
-  id: string;
-}>) {
+  ...rest
+}: Readonly<H2Props>) {
   return (
     <h2
       className={cn(
@@ -37,33 +45,32 @@ export function CkH2({
       )}
       data-section={dataSection}
       id={id}
+      {...rest}
     >
       {children}
     </h2>
   );
 }
-export function CkH3({
-  children,
-  className,
-}: Readonly<{
-  children: React.ReactNode;
-  className?: string;
-}>) {
+export function CkH3({ children, className, ...rest }: Readonly<H3Props>) {
   return (
     <h3
       className={cn(
         "scroll-m-20 text-2xl font-semibold tracking-tight",
         className
       )}
+      {...rest}
     >
       {children}
     </h3>
   );
 }
-export function CkP({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return <p className="leading-7 [&:not(:first-child)]:mt-6">{children}</p>;
+export function CkP({ children, className, ...rest }: Readonly<PProps>) {
+  return (
+    <p
+      className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
+      {...rest}
+    >
+      {children}
+    </p>
+  );
 }
