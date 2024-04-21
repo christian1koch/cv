@@ -37,11 +37,7 @@ export const ContactInformation = (props: ContactInformationProps) => {
       </div>
       <div className="flex flex-col justify-between">
         <div className=" mx-4 flex flex-col items-center">
-          <CkH2
-            className="mt-2 text-4xl font-bold"
-            data-section={props.id}
-            id={props.id}
-          >
+          <CkH2 className="mt-2 text-4xl font-bold" id={props.id}>
             {props.name}
           </CkH2>
           <TextSection>{props.role}</TextSection>
