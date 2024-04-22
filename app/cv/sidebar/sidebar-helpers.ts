@@ -19,10 +19,6 @@ export function isSidebarContentActive(
 export function dataToSidebarContent(data: CvData): SidebarContent[] {
   return [
     {
-      title: "Contact Information",
-      id: data.contactInformation.id,
-    },
-    {
       title: data.about.heading,
       id: data.about.id,
     },
