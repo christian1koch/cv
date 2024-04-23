@@ -40,7 +40,7 @@ export default function CvPage() {
           <WorkExperienceCard workExperience={cvData.experience.items[0]} />
         ) : null}
         <TitleWrapper>
-          <CkH2 data-section={"contact-me"} id={"contact-me"}>
+          <CkH2 data-section="contact-me" id="contact-me">
             Contact Me
           </CkH2>
         </TitleWrapper>

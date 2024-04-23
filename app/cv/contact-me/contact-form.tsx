@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { CkP } from "@/components/ui/typography";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is too short").max(50, "Name is too long"),
@@ -27,6 +28,7 @@ const formSchema = z.object({
 });
 
 export function ContactForm() {
+  const { toast } = useToast();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -47,7 +49,32 @@ export function ContactForm() {
     formdata.append("email", values.email);
     formdata.append("subject", values.subject);
     formdata.append("message", values.message);
-    await sendContactFormEmail(formdata);
+    try {
+      const response = await sendContactFormEmail(formdata);
+      if (response.ok) {
+        toast({ title: "Message sent successfully" });
+        // form.reset();
+      } else {
+        const errormsg = await response.text();
+        toast({
+          title: "Failed to send message",
+          description: errormsg,
+          variant: "destructive",
+        });
+      }
+    } catch (e) {
+      let message = "";
+      if (typeof e === "string") {
+        message = e.toUpperCase(); // works, `e` narrowed to string
+      } else if (e instanceof Error) {
+        message = e.message; // works, `e` narrowed to Error
+      }
+      toast({
+        title: "Failed to send message",
+        description: message,
+        variant: "destructive",
+      });
+    }
   }
   return (
     <div className="mb-8">

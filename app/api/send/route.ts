@@ -1,6 +1,5 @@
 import { Resend } from "resend";
 import { EmailTemplate } from "@/components/ui/email-template";
-import { ObjectValues } from "@/lib/utils";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -19,8 +18,6 @@ const RESEND_ERROR_CODES = {
   application_error: 500,
   internal_server_error: 500,
 } as const;
-
-type ResendErrorCodes = ObjectValues<typeof RESEND_ERROR_CODES>;
 
 interface SendEmailPayload {
   name: string;
@@ -42,13 +39,15 @@ export async function POST(req: Request) {
 
     const { data, error } = await resend.emails.send({
       from: "contact@resend.dev",
-      to: ["christiankochecheverria@gmail.com"],
+      to: ["christiankochecheverriswaa@gmail.com"], // TODO: use env variable
       subject: payload.subject,
       react: EmailTemplate(payload) as React.ReactElement,
     });
 
     if (error) {
-      return Response.json(error, { status: RESEND_ERROR_CODES[error.name] });
+      return new Response(error.message, {
+        status: RESEND_ERROR_CODES[error.name],
+      });
     }
 
     return Response.json({ ...payload, data }, { status: 200 });
