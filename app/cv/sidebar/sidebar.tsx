@@ -11,7 +11,7 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ sidebarContent }) => {
   const activeSection = useActiveElement("[data-section]", {
-    rootMargin: "0px 0px -60% 0px",
+    rootMargin: "0% 0% -80% 0%",
   });
   return (
     <div className="fixed h-full">

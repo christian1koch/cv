@@ -12,7 +12,7 @@ const useActiveElement = (
   useEffect(() => {
     //create new instance and pass a callback function
     observer.current = new IntersectionObserver((entries) => {
-      const visibleSection = entries.find(
+      const visibleSection = entries.findLast(
         (entry) => entry.isIntersecting
       )?.target;
       //Update state with the visible section ID
