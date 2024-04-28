@@ -34,6 +34,10 @@ export function dataToSidebarContent(data: CvData): SidebarContent[] {
         id: item.id,
       })),
     },
+    {
+      title: "Contact Me",
+      id: "contact-me",
+    },
   ];
 }
 

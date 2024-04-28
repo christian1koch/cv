@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { CkP } from "@/components/ui/typography";
 import { useToast } from "@/components/ui/use-toast";
+import { useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is too short").max(50, "Name is too long"),
@@ -29,6 +30,8 @@ const formSchema = z.object({
 
 export function ContactForm() {
   const { toast } = useToast();
+
+  const [isLoading, setIsLoading] = useState(false);
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -50,9 +53,10 @@ export function ContactForm() {
     formdata.append("subject", values.subject);
     formdata.append("message", values.message);
     try {
+      setIsLoading(true);
       const response = await sendContactFormEmail(formdata);
       if (response.ok) {
-        toast({ title: "Message sent successfully" });
+        toast({ description: "Message sent successfully" });
         // form.reset();
       } else {
         const errormsg = await response.text();
@@ -74,6 +78,8 @@ export function ContactForm() {
         description: message,
         variant: "destructive",
       });
+    } finally {
+      setIsLoading(false);
     }
   }
   return (
@@ -132,7 +138,9 @@ export function ContactForm() {
             )}
           />
           <div className="flex justify-end">
-            <Button type="submit">Submit</Button>
+            <Button isLoading={isLoading} type="submit">
+              Submit
+            </Button>
           </div>
         </form>
       </Form>

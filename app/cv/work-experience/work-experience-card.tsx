@@ -17,8 +17,8 @@ interface WorkExperienceCardProps {
 const WorkExperienceCard = ({ workExperience }: WorkExperienceCardProps) => {
   const { company, position, responsibilities, date, id } = workExperience;
   return (
-    <div className="mb-16">
-      <Card data-section={id} id={id}>
+    <div>
+      <Card className="mb-16" data-section={id} id={id}>
         <CardHeader>
           <CardTitle>{company}</CardTitle>
           <CardDescription>{position}</CardDescription>
