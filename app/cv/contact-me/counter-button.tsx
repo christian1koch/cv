@@ -1,15 +1,13 @@
 "use-client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, ButtonProps } from "@/components/ui/button";
 import useInterval from "./use-interval";
+import { SECOND_IN_MS } from "./contact-form-helpers";
 
 interface CounterButtonProps extends ButtonProps {
   timerInMs: number;
-  shouldStartCountdown: boolean;
   onCountdownFinish: () => void;
 }
-
-const MINUTE_IN_MS = 1 * 60 * 1000;
 
 const CounterButton = ({
   timerInMs,
@@ -17,11 +15,9 @@ const CounterButton = ({
   ...rest
 }: CounterButtonProps) => {
   const [remainingTime, setRemainingTime] = useState(timerInMs);
-
-  const [start, stop] = useInterval(() => {
-    setRemainingTime((prev) => prev - 1000);
-  }, 1000);
-
+  const [start, stop, isRunning] = useInterval(() => {
+    setRemainingTime((prev) => prev - SECOND_IN_MS);
+  }, SECOND_IN_MS);
   useEffect(() => {
     setRemainingTime(timerInMs);
     if (timerInMs > 0) {
@@ -29,14 +25,18 @@ const CounterButton = ({
     }
   }, [timerInMs]);
 
-  if (remainingTime <= 0) {
+  if (remainingTime <= 0 && isRunning) {
     stop();
+    onCountdownFinish();
+  }
+
+  if (remainingTime <= 0) {
     return <Button {...rest} />;
   }
 
   return (
     <Button {...rest} disabled>
-      {(remainingTime / 1000).toFixed(0)}
+      {(remainingTime / SECOND_IN_MS).toFixed(0)}
     </Button>
   );
 };

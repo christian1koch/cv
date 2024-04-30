@@ -1,4 +1,6 @@
 "use-client";
+export const SECOND_IN_MS = 1000;
+export const MINUTE_IN_MS = 1 * 60 * 1000;
 const COOKIE_LAST_TRY_EXPIRE = "last-try-expire";
 export function saveLastTryExpireInCookie(timeInMs: number) {
   // expire date is now + 1 minute
@@ -11,15 +13,12 @@ export function getLastTryTimeExpireInCookie() {
     .split(";")
     .find((cookie) => cookie.includes(COOKIE_LAST_TRY_EXPIRE));
   if (!cookie) {
-    console.log("no cookie found");
     return null;
   }
   const expireDate = cookie.split("=")[1];
   if (!expireDate) {
-    console.log("no expire date found");
     return null;
   }
-  console.log("expireDate", expireDate);
   return Number.parseInt(expireDate);
 }
 

@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 function useInterval(callback: () => void, delay: number) {
   const savedCallback = useRef<() => void>();
   const intervalId = useRef<NodeJS.Timeout>();
+  const isRunning = useRef<boolean>(false);
   // Remember the latest callback.
   useEffect(() => {
     savedCallback.current = callback;
@@ -12,6 +13,7 @@ function useInterval(callback: () => void, delay: number) {
 
   function tick() {
     savedCallback.current && savedCallback.current();
+    isRunning.current = true;
   }
 
   const start = () => {
@@ -22,9 +24,10 @@ function useInterval(callback: () => void, delay: number) {
   };
   const stop = () => {
     clearInterval(intervalId.current);
+    isRunning.current = false;
   };
 
-  return [start, stop] as const;
+  return [start, stop, isRunning.current] as const;
 }
 
 export default useInterval;

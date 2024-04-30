@@ -18,6 +18,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { CkP } from "@/components/ui/typography";
 import { useToast } from "@/components/ui/use-toast";
 import {
+  MINUTE_IN_MS,
   getRemainingTimeInLastTryCookie,
   saveLastTryExpireInCookie,
 } from "./contact-form-helpers";
@@ -39,14 +40,11 @@ export function ContactForm() {
   const { toast } = useToast();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [shouldCountdown, setShouldCountdown] = useState(false);
   const [lastTry, setLastTry] = useState<number>(0);
 
   useEffect(() => {
     const tryFromCookie = getRemainingTimeInLastTryCookie();
-    console.log("tryFromCookie", tryFromCookie);
     if (tryFromCookie > 0) {
-      setShouldCountdown(true);
       setLastTry(tryFromCookie);
     }
   }, []);
@@ -75,7 +73,9 @@ export function ContactForm() {
       const response = await sendContactFormEmail(formdata);
       if (response.ok) {
         toast({ description: "Message sent successfully" });
-        // form.reset();
+        form.reset();
+        setLastTry(MINUTE_IN_MS);
+        saveLastTryExpireInCookie(MINUTE_IN_MS);
       } else {
         const errormsg = await response.text();
         toast({
@@ -106,14 +106,7 @@ export function ContactForm() {
         Fill out the form below and I'll get back to you as soon as possible.
       </CkP>
       <Form {...form}>
-        <form
-          className="space-y-8"
-          onSubmit={form.handleSubmit(() => {
-            setLastTry(1 * 60 * 1000);
-            setShouldCountdown(true);
-            saveLastTryExpireInCookie(1 * 60 * 1000);
-          })}
-        >
+        <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             control={form.control}
             name="name"
@@ -165,12 +158,9 @@ export function ContactForm() {
           <div className="flex justify-end">
             <CounterButton
               isLoading={isLoading}
-              shouldStartCountdown={shouldCountdown}
               timerInMs={lastTry}
               type="submit"
-              onCountdownFinish={() => {
-                setShouldCountdown(false);
-              }}
+              onCountdownFinish={() => setLastTry(0)}
             >
               Submit
             </CounterButton>
