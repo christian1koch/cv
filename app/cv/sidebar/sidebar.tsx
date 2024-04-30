@@ -29,7 +29,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ sidebarContent }) => {
                 {content.children ? (
                   <ul>
                     {content.children.map((child) => (
-                      <li key={`sidebar ${child.id}`} className="m-4">
+                      <li key={`sidebar ${child.id}`} className="mx-4 mt-4">
                         <SidebarElement
                           href={`#${child.id}`}
                           isActive={isSidebarContentActive(
