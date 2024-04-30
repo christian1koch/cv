@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-condition -- Needed for dev mode*/
 /* eslint-disable react/no-unescaped-entities -- Weird */
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { sendContactFormEmail } from "@/app/api/api";
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -16,7 +17,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { CkP } from "@/components/ui/typography";
 import { useToast } from "@/components/ui/use-toast";
-import { useState } from "react";
+import {
+  getRemainingTimeInLastTryCookie,
+  saveLastTryExpireInCookie,
+} from "./contact-form-helpers";
+import CounterButton from "./counter-button";
+
+const DEV_MODE = true;
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is too short").max(50, "Name is too long"),
@@ -32,14 +39,25 @@ export function ContactForm() {
   const { toast } = useToast();
 
   const [isLoading, setIsLoading] = useState(false);
+  const [shouldCountdown, setShouldCountdown] = useState(false);
+  const [lastTry, setLastTry] = useState<number>(0);
+
+  useEffect(() => {
+    const tryFromCookie = getRemainingTimeInLastTryCookie();
+    console.log("tryFromCookie", tryFromCookie);
+    if (tryFromCookie > 0) {
+      setShouldCountdown(true);
+      setLastTry(tryFromCookie);
+    }
+  }, []);
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
+      name: DEV_MODE ? "Jan Schneider" : "",
+      email: DEV_MODE ? "Jan_Schneider@gmail.com" : "",
+      subject: DEV_MODE ? "Jan Schneider" : "",
+      message: DEV_MODE ? "Jan Schneider" : "",
     },
   });
 
@@ -88,7 +106,14 @@ export function ContactForm() {
         Fill out the form below and I'll get back to you as soon as possible.
       </CkP>
       <Form {...form}>
-        <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
+        <form
+          className="space-y-8"
+          onSubmit={form.handleSubmit(() => {
+            setLastTry(1 * 60 * 1000);
+            setShouldCountdown(true);
+            saveLastTryExpireInCookie(1 * 60 * 1000);
+          })}
+        >
           <FormField
             control={form.control}
             name="name"
@@ -138,9 +163,17 @@ export function ContactForm() {
             )}
           />
           <div className="flex justify-end">
-            <Button isLoading={isLoading} type="submit">
+            <CounterButton
+              isLoading={isLoading}
+              shouldStartCountdown={shouldCountdown}
+              timerInMs={lastTry}
+              type="submit"
+              onCountdownFinish={() => {
+                setShouldCountdown(false);
+              }}
+            >
               Submit
-            </Button>
+            </CounterButton>
           </div>
         </form>
       </Form>
