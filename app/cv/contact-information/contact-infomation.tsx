@@ -49,7 +49,7 @@ export const ContactInformation = (props: ContactInformationProps) => {
             {!!props.github && <GithubButton github={props.github} />}
           </div>
           <Button asChild>
-            <a href={`mailto:${props.email}`}>
+            <a href="#contact-me">
               <EnvelopeClosedIcon className="mr-2" /> E-mail me
             </a>
           </Button>
