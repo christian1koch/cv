@@ -1,8 +1,8 @@
 "use-client";
 import { useEffect, useState } from "react";
 import { Button, ButtonProps } from "@/components/ui/button";
-import useInterval from "./use-interval";
 import { SECOND_IN_MS } from "./contact-form-helpers";
+import useInterval from "./use-interval";
 
 interface CounterButtonProps extends ButtonProps {
   timerInMs: number;

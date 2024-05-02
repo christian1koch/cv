@@ -1,14 +1,14 @@
 "use client";
+import { TitleWrapper } from "@/components/ui/section-wrapper";
 import { CkH2 } from "@/components/ui/typography";
 import { ContactInformation } from "./contact-information/contact-infomation";
+import { ContactForm } from "./contact-me/contact-form";
 import { cvData } from "./data";
 import TextSection from "./shared/text-section";
 import { Sidebar } from "./sidebar/sidebar";
 import { dataToSidebarContent } from "./sidebar/sidebar-helpers";
 import SkillsSection from "./skills/skills-section";
 import WorkExperienceCard from "./work-experience/work-experience-card";
-import { TitleWrapper } from "@/components/ui/section-wrapper";
-import { ContactForm } from "./contact-me/contact-form";
 
 export default function CvPage() {
   return (
