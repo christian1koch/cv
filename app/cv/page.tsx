@@ -1,6 +1,8 @@
 "use client";
+import { TitleWrapper } from "@/components/ui/section-wrapper";
 import { CkH2 } from "@/components/ui/typography";
 import { ContactInformation } from "./contact-information/contact-infomation";
+import { ContactForm } from "./contact-me/contact-form";
 import { cvData } from "./data";
 import TextSection from "./shared/text-section";
 import { Sidebar } from "./sidebar/sidebar";
@@ -13,33 +15,38 @@ export default function CvPage() {
     <>
       <Sidebar sidebarContent={dataToSidebarContent(cvData)} />
       <div className="container mx-auto mt-14 flex max-w-2xl flex-col">
-        <ContactInformation
-          {...cvData.contactInformation}
-          id={cvData.contactInformation.id}
-        />
+        <ContactInformation {...cvData.contactInformation} />
 
-        <div className=" mb-16 mt-14">
+        <TitleWrapper>
           <CkH2 data-section={cvData.about.id} id={cvData.about.id}>
             {cvData.about.heading}
           </CkH2>
-        </div>
+        </TitleWrapper>
         <TextSection>{cvData.about.content}</TextSection>
-        <div className=" mb-16 mt-14">
+        <TitleWrapper>
           <CkH2 data-section={cvData.skills.id} id={cvData.skills.id}>
             {cvData.skills.heading}
           </CkH2>
-        </div>
+        </TitleWrapper>
         <div>
           <SkillsSection skills={cvData.skills.list} />
         </div>
-        <div className=" mb-16 mt-14">
+        <TitleWrapper>
           <CkH2 data-section={cvData.experience.id} id={cvData.experience.id}>
             {cvData.experience.heading}
           </CkH2>
-        </div>
+        </TitleWrapper>
         {cvData.experience.items[0] ? (
           <WorkExperienceCard workExperience={cvData.experience.items[0]} />
         ) : null}
+        <TitleWrapper>
+          <CkH2 data-section="contact-me" id="contact-me">
+            Contact Me
+          </CkH2>
+        </TitleWrapper>
+        <div>
+          <ContactForm />
+        </div>
       </div>
     </>
   );

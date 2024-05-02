@@ -17,12 +17,10 @@ interface WorkExperienceCardProps {
 const WorkExperienceCard = ({ workExperience }: WorkExperienceCardProps) => {
   const { company, position, responsibilities, date, id } = workExperience;
   return (
-    <div className="mb-16">
-      <Card>
+    <div>
+      <Card className="mb-16" data-section={id} id={id}>
         <CardHeader>
-          <CardTitle data-section={id} id={id}>
-            {company}
-          </CardTitle>
+          <CardTitle>{company}</CardTitle>
           <CardDescription>{position}</CardDescription>
         </CardHeader>
         <CardContent>
