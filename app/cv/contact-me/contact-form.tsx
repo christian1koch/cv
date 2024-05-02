@@ -24,7 +24,7 @@ import {
 } from "./contact-form-helpers";
 import CounterButton from "./counter-button";
 
-const DEV_MODE = true;
+const DEV_MODE = false;
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is too short").max(50, "Name is too long"),
