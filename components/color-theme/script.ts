@@ -19,7 +19,6 @@ export const script = (
 
   function updateDOM(theme: string) {
     if (isClass) {
-      console.log("theme", theme);
       el.classList.remove(...classes);
       el.classList.add(theme);
     } else {
