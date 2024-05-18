@@ -6,6 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useIsClient } from "@/lib/use-is-client";
 import { ColorModeTheme } from "../color-theme/types";
 import { useColorTheme } from "../color-theme/use-theme";
 
@@ -24,6 +25,8 @@ const ColorIcon = ({ color }: { color: Color }) => {
 };
 
 const ColorPicker = ({ colors }: { colors: Color[] }) => {
+  const isClient = useIsClient();
+
   const { theme, setTheme } = useColorTheme();
 
   const setThemeToLowercase = (theme: string) => {
@@ -37,10 +40,10 @@ const ColorPicker = ({ colors }: { colors: Color[] }) => {
 
   return (
     <Select
-      value={getCurrentColor()?.label}
+      value={isClient ? getCurrentColor()?.label : "Pick a Color"}
       onValueChange={setThemeToLowercase}
     >
-      <SelectTrigger suppressHydrationWarning className="w-44">
+      <SelectTrigger className="w-44">
         <SelectValue className="w-full" placeholder="Pick a Color" />
       </SelectTrigger>
       <SelectContent className="w-full">
