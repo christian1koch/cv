@@ -1,23 +1,38 @@
+"use client";
 import { Link2Icon } from "@radix-ui/react-icons";
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, useRef } from "react";
 import { Button } from "./button";
 
 interface ClipboardLinkProps extends ComponentPropsWithoutRef<"a"> {
-  clipboardLink: string;
+  clipboardLink: string | undefined;
 }
 
-function ClipboardLink({ clipboardLink, onClick }: ClipboardLinkProps) {
+function ClipboardLink({
+  clipboardLink = "",
+  onClick,
+  ...rest
+}: ClipboardLinkProps) {
+  const anchorRef = useRef<HTMLAnchorElement>(null);
+
   const handleClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
-    await navigator.clipboard.writeText(clipboardLink);
+    const currentHref = anchorRef.current?.href;
+    if (currentHref) {
+      await navigator.clipboard.writeText(currentHref);
+    }
     if (onClick) {
       onClick(e);
     }
   };
 
   return (
-    <Button asChild size="icon">
-      <a href={`#${clipboardLink}`} onClick={handleClick}>
-        <Link2Icon />
+    <Button asChild size="icon" variant="ghost">
+      <a
+        {...rest}
+        ref={anchorRef}
+        href={`#${clipboardLink}`}
+        onClick={handleClick}
+      >
+        <Link2Icon className="h-5 w-5" />
       </a>
     </Button>
   );

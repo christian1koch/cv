@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import ClipboardLink from "./clipboard-link";
 
 interface H1Props extends React.ComponentPropsWithoutRef<"h1"> {
   children: React.ReactNode;
@@ -38,17 +39,23 @@ export function CkH2({
   ...rest
 }: Readonly<H2Props>) {
   return (
-    <h2
-      className={cn(
-        "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
-        className
-      )}
-      data-section={dataSection}
-      id={id}
-      {...rest}
-    >
-      {children}
-    </h2>
+    <div className="group relative">
+      <ClipboardLink
+        className="absolute -left-10 flex opacity-0 transition-opacity group-hover:opacity-100"
+        clipboardLink={id}
+      />
+      <h2
+        className={cn(
+          "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
+          className
+        )}
+        data-section={dataSection}
+        id={id}
+        {...rest}
+      >
+        {children}
+      </h2>
+    </div>
   );
 }
 export function CkH3({ children, className, ...rest }: Readonly<H3Props>) {
